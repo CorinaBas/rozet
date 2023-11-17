@@ -1,0 +1,136 @@
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
+class Product {
+    private String name;
+    private double price;
+
+    public Product(String name, double price) {
+        this.name = name;
+        this.price = price;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    @Override
+    public String toString() {
+        return name + " - $" + price;
+    }
+}
+
+class ShoppingCart {
+    private List<Product> items;
+
+    public ShoppingCart() {
+        items = new ArrayList<>();
+    }
+
+    public void addProduct(Product product) {
+        items.add(product);
+    }
+
+    public void displayCart() {
+        System.out.println("Корзина:");
+        for (Product item : items) {
+            System.out.println(item);
+        }
+    }
+
+    public double calculateTotal() {
+        double total = 0;
+        for (Product item : items) {
+            total += item.getPrice();
+        }
+        return total;
+    }
+}
+
+public class OnlineStore {
+    private List<Product> products;
+    private ShoppingCart cart;
+    private Scanner scanner;
+
+    public OnlineStore() {
+        products = new ArrayList<>();
+        cart = new ShoppingCart();
+        scanner = new Scanner(System.in);
+
+        // Добавим несколько товаров для примера
+        products.add(new Product("Ноутбук", 999.99));
+        products.add(new Product("Смартфон", 499.99));
+        products.add(new Product("Наушники", 79.99));
+    }
+
+    public void displayProducts() {
+        System.out.println("Товары в магазине:");
+        for (Product product : products) {
+            System.out.println(product);
+        }
+    }
+
+    public void addToCart() {
+        displayProducts();
+        System.out.print("Введите номер товара для добавления в корзину: ");
+        int productIndex = scanner.nextInt();
+
+        if (productIndex >= 1 && productIndex <= products.size()) {
+            Product selectedProduct = products.get(productIndex - 1);
+            cart.addProduct(selectedProduct);
+            System.out.println(selectedProduct.getName() + " добавлен в корзину.");
+        } else {
+            System.out.println("Некорректный номер товара.");
+        }
+    }
+
+    public void viewCart() {
+        cart.displayCart();
+        System.out.println("Общая стоимость: $" + cart.calculateTotal());
+    }
+
+    public static void main(String[] args) {
+        OnlineStore onlineStore = new OnlineStore();
+        Scanner scanner = new Scanner(System.in);
+
+        int choice;
+        do {
+            System.out.println("\n1. Показать товары");
+            System.out.println("2. Добавить товар в корзину");
+            System.out.println("3. Показать корзину");
+            System.out.println("4. Оформить заказ");
+            System.out.println("0. Выйти");
+
+            System.out.print("Выберите действие: ");
+            choice = scanner.nextInt();
+            scanner.nextLine();  // consume newline
+
+            switch (choice) {
+                case 1:
+                    onlineStore.displayProducts();
+                    break;
+                case 2:
+                    onlineStore.addToCart();
+                    break;
+                case 3:
+                    onlineStore.viewCart();
+                    break;
+                case 4:
+                    System.out.println("Заказ оформлен! Спасибо за покупку.");
+                    break;
+                case 0:
+                    System.out.println("Выход из программы.");
+                    break;
+                default:
+                    System.out.println("Некорректный выбор. Повторите попытку.");
+            }
+        } while (choice != 0);
+
+        scanner.close();
+    }
+}
