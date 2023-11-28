@@ -66,6 +66,11 @@ public class OnlineStore {
         products.add(new Product("Ноутбук", 999.99));
         products.add(new Product("Смартфон", 499.99));
         products.add(new Product("Наушники", 79.99));
+        products.add(new Product("Планшет", 2279.99));
+        products.add(new Product("биноколь", 79.99));
+        products.add(new Product("колонка", 179.99));
+        products.add(new Product("Н1", 79.99));
+
     }
 
     public void displayProducts() {
