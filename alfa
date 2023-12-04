@@ -101,41 +101,4 @@ public class OnlineStore {
 
     public static void main(String[] args) {
         OnlineStore onlineStore = new OnlineStore();
-        Scanner scanner = new Scanner(System.in);
-
-        int choice;
-        do {
-            System.out.println("\n1. Показать товары");
-            System.out.println("2. Добавить товар в корзину");
-            System.out.println("3. Показать корзину");
-            System.out.println("4. Оформить заказ");
-            System.out.println("0. Выйти");
-
-            System.out.print("Выберите действие: ");
-            choice = scanner.nextInt();
-            scanner.nextLine();  // consume newline
-
-            switch (choice) {
-                case 1:
-                    onlineStore.displayProducts();
-                    break;
-                case 2:
-                    onlineStore.addToCart();
-                    break;
-                case 3:
-                    onlineStore.viewCart();
-                    break;
-                case 4:
-                    System.out.println("Заказ оформлен! Спасибо за покупку.");
-                    break;
-                case 0:
-                    System.out.println("Выход из программы.");
-                    break;
-                default:
-                    System.out.println("Некорректный выбор. Повторите попытку.");
-            }
-        } while (choice != 0);
-
-        scanner.close();
-    }
-}
+        Scanner scanner = new Scanner(System.in
