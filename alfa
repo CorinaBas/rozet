@@ -13,19 +13,4 @@ class Product {
 
     public String getName() {
         return name;
-    }
-
-    public double getPrice() {
-        return price;    }
-
-    @Override
-    public String toString() {        return name + " - $" + price;
-}
-class ShoppingCart {    private List<Product> items;
-    public ShoppingCart() {
-        items = new ArrayList<>();    }
-    }
-
-    public static void main(String[] args) {
-        OnlineStore onlineStore = new OnlineStore();
-        Scanner scanner = new Scanner(System.in
+    
